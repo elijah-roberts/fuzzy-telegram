@@ -27,6 +27,6 @@ jobs:
       - name: Install Dependencies
         run: go mod download
 
-      # Step 4: Run all unit tests with race detection and coverage mapping
+      # Step 4: Run all unit tests with race detection
       - name: Run Tests
         run: go test -v -race ./...
