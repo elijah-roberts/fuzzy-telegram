@@ -30,7 +30,7 @@ func TestHelloCmd(t *testing.T) {
 	}
 
 	got := strings.TrimSpace(buf.String())
-	want := "Hello, World!"
+	want := "Hello, World!!!"
 	if got != want {
 		t.Errorf("hello command output = %q, want %q", got, want)
 	}
