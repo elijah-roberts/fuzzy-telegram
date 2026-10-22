@@ -1,9 +1,9 @@
 # Disable inheritance
 options:
   no_parent_owners: true
+labels:
+  - sig/devops
 approvers:
   - devops
 reviewers:
   - devops
-labels:
-  - sig/devops
