@@ -11,7 +11,7 @@ RUN go mod download
 COPY . .
 
 # Build a statically linked binary optimized for size
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o hello .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o myapp ./app/
 
 # Stage 2: Create the minimal runtime container
 FROM alpine:latest
@@ -19,7 +19,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy the compiled binary from the builder stage
-COPY --from=builder /app/hello .
+COPY --from=builder /app/myapp .
 
 # Run the binary
-CMD ["./hello"]
+CMD ["./myapp", "hello"]

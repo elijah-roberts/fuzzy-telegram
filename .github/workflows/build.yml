@@ -26,4 +26,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: false
-          tags: hello:latest
+          tags: myapp:latest

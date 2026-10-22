@@ -1,0 +1,32 @@
+name: Go Unit Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up the Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.27' # Specify your Go version or use stable
+          cache: true        # Automatically caches Go modules and build outputs
+
+      # Step 3: Download dependencies
+      - name: Install Dependencies
+        run: go mod download
+
+      # Step 4: Run all unit tests with race detection and coverage mapping
+      - name: Run Tests
+        run: go test -v -race ./...
