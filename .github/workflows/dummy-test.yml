@@ -1,0 +1,21 @@
+name: Dummy Test Workflow
+
+# Controls when the workflow will run
+on:
+  pull_request:
+    branches: [ "main" ] # Triggers on pull requests to the main branch
+  workflow_dispatch: # Allows you to manually trigger this workflow from the Actions tab
+
+jobs:
+  test-job:
+    name: dummy-test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Run a dummy echo test
+      - name: Run a Dummy Echo
+        run: echo "Hello, GitHub Actions! The testing environment is working perfectly."
