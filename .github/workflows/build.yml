@@ -1,0 +1,29 @@
+name: Build and Dockerize Go App
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-pack:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the source code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Docker Buildx for optimization and caching
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 3: Build the container locally (without pushing)
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: hello:latest
