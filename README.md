@@ -1,1 +1,1 @@
-Demo Prow Chatops
+Prow Chatops Demo
